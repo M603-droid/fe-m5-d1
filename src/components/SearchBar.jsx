@@ -4,7 +4,7 @@ export default class SearchBar extends React.Component {
 
     state = {
         query: '',
-        jobs: []
+        data: []
     }
 
 
@@ -16,28 +16,41 @@ export default class SearchBar extends React.Component {
     handleSubmit = async (e) => {
         e.preventDefault()
         
-        const response = await fetch("https://remotive.io/api/remote-jobs?search=" + this.state.query)
-        const {jobs} = await response.json()
+        const response = await fetch("https://strive-jobs-api.herokuapp.com/jobs?title=" + this.state.query)
+        const {data} = await response.json()
 
-        this.setState({jobs})
+        this.setState({data})
         
-        console.log(jobs)
+        console.log(data)
     }
     
     render() { 
-        return(
-            jobs.map((job)=>{<Row>
-                <Col xs={4} >
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Control type="search" value={this.state.query} onChange={this.handleChange} placeholder = "write here to search...." />
-                </Form>
-                </Col>
-                <Col xs={8}>
-            
-                </Col>
-                </Row>})
+       {/* this.state.jobs.map((job) => {  */}     
+               return(
+                <Row>
+               <Col xs={10} className='mx-auto'>
+               <Form onSubmit={this.handleSubmit}>
+                   <Form.Control type="search" value={this.state.query} onChange={this.handleChange} placeholder ="write here to search..." />
+               </Form>
+               </Col>
+                    <Col xs={10} className='mx-auto'>
+                    {
+                       this.state.data.map(result => ( <>
+                       <div>{result.title}</div>
+                        <div>{result.company_name}</div>
+                      </>
+
+                       )
+                   
+
+                      )
+                    }
+                    
+                    </Col>       
+               </Row>
+           )
+        }
         
              
-            )
-    }
-}
+    }      
+    
