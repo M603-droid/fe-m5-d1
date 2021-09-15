@@ -39,7 +39,9 @@ export default class SearchBar extends React.Component {
                        this.state.data.map(result => ( <Row>
                      <Col xs={3}><Link to ={ `/${result.company_name} `}>{result.company_name}</Link></Col>
 
-                     <Col xs={9}><div>{result.title}</div></Col> 
+                     <Col xs={7}><div>{result.title}</div></Col> 
+                     <Col xs={2}><div> <button>add to favorite</button></div></Col> 
+                     
                       </Row>
 
                        )
