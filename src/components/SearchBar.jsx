@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 export default class SearchBar extends React.Component {
 
     state = {
@@ -35,15 +36,16 @@ export default class SearchBar extends React.Component {
                </Col>
                     <Col xs={10} className='mx-auto'>
                     {
-                       this.state.data.map(result => ( <>
-                       <div>{result.title}</div>
-                        <div>{result.company_name}</div>
-                      </>
+                       this.state.data.map(result => ( <Row>
+                     <Col xs={3}><Link to ={ `/${result.company_name} `}>{result.company_name}</Link></Col>
+
+                     <Col xs={9}><div>{result.title}</div></Col> 
+                      </Row>
 
                        )
                    
 
-                      )
+                      )  
                     }
                     
                     </Col>       
