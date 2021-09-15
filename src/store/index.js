@@ -1,6 +1,6 @@
-import { createStore } from "redux";
+import { Conf } from "redux";
 export const initialState  = {
     favorites: {
-       jobs : []
+       companies : []
     }
 }
