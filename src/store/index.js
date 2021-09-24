@@ -1,6 +1,3 @@
-import { Conf } from "redux";
-export const initialState  = {
-    favorites: {
-       companies : []
-    }
-}
+import { createStore } from 'redux'
+import mainReducer from '../reducers'
+export default createStore(mainReducer)
